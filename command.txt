@@ -1,0 +1,2 @@
+ cat test | grep inet | tr -s ' '| cut -d' ' -f2| head -n1
+ifconfig -a | grep inet | sed -n '3p'| cut -d\  -f10

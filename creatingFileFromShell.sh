@@ -1,6 +1,1 @@
-FILENAME=removing-duplicates-in-lists; touch removing-duplicates-in-lists-sample.py ; chmod +x removing-duplicates-in-lists-sample.py
-
-
-cat<<EOF >  file-name
-
-EOF
+FILENAME=difference-between-del-remove-and-pop-on-lists ; touch ${FILENAME}-sample.py ; chmod +x ${FILENAME}-sample.py

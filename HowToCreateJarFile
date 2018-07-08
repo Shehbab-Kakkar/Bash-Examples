@@ -1,0 +1,42 @@
+#Jar file we can create from class
+
+1) Java "HelloWorld.java" program
+
+[root@node01 apps]# cat HelloWorld.java
+/* This is a simple Java program.
+   FileName : "HelloWorld.java". */
+class HelloWorld
+{
+    // Your program begins with a call to main().
+    // Prints "Hello, World" to the terminal window.
+    public static void main(String args[])
+    {
+        System.out.println("Hello World");
+    }
+}
+
+
+2) Compile java code we get class. From class we will create jar
+
+[root@node01 apps]# javac HelloWorld.java
+[root@node01 apps]# ll
+total 12
+-rw-r--r--. 1 root    root    425 Jul  8 11:32 HelloWorld.class
+-rw-r--r--. 1 jenkins jenkins 292 Jul  8 11:18 HelloWorld.java
+
+
+3) Write a "Manifest.txt" mention the class name
+
+[root@node01 apps]# cat Manifest.txt
+Main-Class: HelloWorld
+ 
+4) Create a jar file
+
+
+[root@node01 apps]# jar -cfvm Demo01.jar Manifest.txt HelloWorld.class
+added manifest
+adding: HelloWorld.class(in = 425) (out= 288)(deflated 32%)
+[root@node01 apps]# java -jar Demo01.jar
+Hello World
+[root@node01 apps]#
+ 

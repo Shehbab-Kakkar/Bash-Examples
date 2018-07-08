@@ -1,0 +1,60 @@
+[root@node01 first-java-program]# pwd
+/var/lib/jenkins/workspace/first-java-program
+[root@node01 first-java-program]# tree
+.
+├── apps
+│   └── HelloWorld.java
+├── bin
+│   └── HelloWorld.jar
+├── build.xml
+├── classes
+│   └── HelloWorld.class
+└── HelloWorld.java
+
+3 directories, 5 files
+[root@node01 first-java-program]# cat HelloWorld.java
+/* This is a simple Java program.
+   FileName : "HelloWorld.java". */
+class HelloWorld
+{
+    // Your program begins with a call to main().
+    // Prints "Hello, World" to the terminal window.
+    public static void main(String args[])
+    {
+        System.out.println("Hello World");
+    }
+}
+[root@node01 first-java-program]# cat build.xml
+<?xml version="1.0"?>
+ <project name="Java Testing" default="create" basedir=".">
+     <target name="delete">
+          <delete dir="bin" />
+          <delete dir="apps" />
+          <delete dir="classes" />
+     </target>
+     <target name="create" depends="delete">
+          <mkdir dir="bin" />
+          <mkdir dir="apps" />
+          <mkdir dir="classes" />
+     </target>
+  <!--   <target name="copy" depends="create"> -->
+     <target name="copy" depends="create">
+        <copy file="HelloWorld.java" todir="apps"/>
+     </target>
+    <target name="compile" depends="copy">
+          <javac srcdir="apps" destdir="classes"> </javac>
+     </target>
+     <target name="jarcreation" depends="compile">
+          <jar destfile="bin/HelloWorld.jar" basedir="classes">
+          <manifest>
+           <attribute name="Main-Class" value="HelloWorld" />
+          </manifest>
+          </jar>
+     </target>
+
+     <target name="done" depends="jarcreation">
+         <echo>!!!!!Build Completed!!!!!</echo>
+     </target>
+ </project>
+[root@node01 first-java-program]#
+

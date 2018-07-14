@@ -1,1 +1,6 @@
 var=`nmap -sP 192.168.43.192-195 | grep report | awk '{ print $5}'` ; for i in $var; do ssh -q root@$i "hostname; ip addr | grep -i eno| grep inet; ping -c1 google.com| grep ms| head -n1";done
+
+
+[root@node02 yum.repos.d]# sed -i '1 i\[redhat]' redhat.repo
+[root@node02 yum.repos.d]# cat redhat.repo
+[redhat]

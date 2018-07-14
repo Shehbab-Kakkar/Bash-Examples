@@ -1,0 +1,1 @@
+var=`nmap -sP 192.168.43.192-195 | grep report | awk '{ print $5}'` ; for i in $var; do ssh -q root@$i "hostname; ip addr | grep -i eno| grep inet; ping -c1 google.com| grep ms| head -n1";done
